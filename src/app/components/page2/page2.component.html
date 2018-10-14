@@ -1,0 +1,8 @@
+
+<div>
+  <mat-form-field class="example-full-width">
+    <input #inp matInput placeholder="init2" value="{{init2}}">
+  </mat-form-field>
+</div>
+
+<a [routerLink]="['/page3']" [queryParams]="{init3: inp.value}">page3</a>

@@ -25,7 +25,9 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              
+            ]
           },
           "configurations": {
             "production": {
@@ -74,7 +76,10 @@
             "styles": [
               "styles.css"
             ],
-            "scripts": [],
+            "scripts": [
+              "./node_modules/angular/angular.js",
+              "./src/app/ajs-ng-app/app.module.js"
+            ],
             "assets": [
               "src/favicon.ico",
               "src/assets"
