@@ -18,6 +18,7 @@ import './app/ajs-ng-app/components/page3.component';
 if (environment.production) {
   enableProdMode();
 }
+<<<<<<< HEAD
 // 
 // // Ensure AngularJS destroys itself on hot reloads.
 // const rootElement = angular.element(document.body);
@@ -35,3 +36,7 @@ if (environment.production) {
 platformBrowserDynamic().bootstrapModule(AppModule)
   .then(ref => window['ngRef'] = ref)
   .catch(err => console.log(err));
+=======
+
+platformBrowserDynamic().bootstrapModule(AppModule).catch(err => console.log(err));
+>>>>>>> feature/url-handle

@@ -1,6 +1,7 @@
 import { Component, ElementRef, Injector, SimpleChanges } from '@angular/core';
 import { UpgradeComponent } from '@angular/upgrade/static';
 
+
 @Component({
   selector: 'upgraded-page3',
   template: '',

@@ -1,11 +1,10 @@
 <!--The content below is only a placeholder and can be replaced.-->
 
 <mat-toolbar color="primary">
-  <span>ng-test</span>
-  <span><a [routerLink]="['/page2']" [queryParams]="{init2: 2}">page2</a></span>
-  <span><a [routerLink]="['/page3']" [queryParams]="{init3: 3}">page3</a></span>
-  <!-- <a href="page2?init2=2">page2</a> -->
-  <!-- <a href="page3?init3=3">page3</a> -->
+  <span class="app-name">ng-test</span>
+  <button mat-button [routerLink]="['/page2']" [queryParams]="{init2: 2}">page2</button>
+  <button mat-button [routerLink]="['/page3']" [queryParams]="{init3: 3}">page3</button>
+  <button mat-button [routerLink]="['/page4']">other</button>
 </mat-toolbar>
 
 

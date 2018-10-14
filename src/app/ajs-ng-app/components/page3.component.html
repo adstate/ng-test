@@ -1,8 +1,7 @@
 <div>
   <md-input-container>
-    <input #inp placeholder="init3" value="{{$ctrl.init3}}">
+    <input placeholder="init3" ng-model="$ctrl.init3" value="{{$ctrl.init3}}">
   </md-input-container>
 </div>
 
-<a href="page2?init2={{inp.value}}">Page2</a>
-<!-- <a ui-sref="page2">Page2</a> -->
+<a href="" router-link="/page2" query-params="{init2: $ctrl.init3}">page2</a>

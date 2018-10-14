@@ -10,10 +10,14 @@ export class AppComponent implements OnInit {
   title = 'app';
 
   constructor(private upgrade: UpgradeModule) {
-    //this.upgrade.bootstrap(document.body, ['testApp']);
+
   }
 
   ngOnInit() {
+<<<<<<< HEAD
     //this.upgrade.bootstrap(document.body, ['testApp'], { });
+=======
+    this.upgrade.bootstrap(document.body, ['testApp']);
+>>>>>>> feature/url-handle
   }
 }

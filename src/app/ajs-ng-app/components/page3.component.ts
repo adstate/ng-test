@@ -12,7 +12,6 @@ angular.
 
       $scope.$on("$locationChangeSuccess", function(event, newPath, oldPath) {
         ctrl.init3 = $location.search().init3;
-        // console.log($scope);
         // console.log($location.search().init3);
       });
     }]
