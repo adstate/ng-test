@@ -20,13 +20,13 @@ import { UpgradedPage3Component } from './components/upgraded-page3/upgraded-pag
 @Component({selector: 'empty', template: ''})
 class EmptyComponent {}
 
-export class CustomUrlHandlingStrategy  implements UrlHandlingStrategy {
-  shouldProcessUrl(url) {
-    return !url.toString().startsWith("/page2");
-  }
-  extract(url) { return url; }
-  merge(url, whole) { return url; }
-}
+// export class CustomUrlHandlingStrategy  implements UrlHandlingStrategy {
+//   shouldProcessUrl(url) {
+//     return !url.toString().startsWith("/page2");
+//   }
+//   extract(url) { return url; }
+//   merge(url, whole) { return url; }
+// }
 
 const routes: Routes = [
   { path: 'page2', component: EmptyComponent },
