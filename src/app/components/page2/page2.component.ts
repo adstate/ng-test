@@ -2,6 +2,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
+import { ajsLocation } from '../../ajs-ng-app/ajs-upgraded-providers';
+
 @Component({
   selector: 'app-page2',
   templateUrl: './page2.component.html',
@@ -14,23 +16,25 @@ export class Page2Component implements OnInit, OnDestroy {
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private $location: ajsLocation
   ) { }
 
   ngOnInit() {
     //console.log(this.route.snapshot.queryParamMap);
     //this.init2 = this.route.snapshot.queryParamMap.get('init2');
+    this.init2 = this.$location.search().init2;
 
-    //console.log(this.router.url);
-    this.subscription = this.route.queryParams.subscribe(params => {
-      //console.log(params);
-      this.init2 = params['init2']
-    });
+    if (!this.init2) {
+      this.subscription = this.route.queryParams.subscribe(params => {
+        this.init2 = params['init2'];
+      });
+    }
 
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    if (this.subscription) this.subscription.unsubscribe();
   }
 
 }

@@ -3,7 +3,6 @@ import { NgModule, Component } from '@angular/core';
 import { UpgradeModule } from '@angular/upgrade/static';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RouterUpgradeInitializer } from '@angular/router/upgrade';
 import { RouterModule, Routes, Router, UrlHandlingStrategy } from '@angular/router';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -11,14 +10,13 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 
 import { AppComponent } from './app.component';
-import { AppRoutingModule } from './/app-routing.module';
-
+import { AppRoutingModule } from './app-routing.module'
 import { Page1Component } from './components/page1/page1.component';
 import { Page2Component } from './components/page2/page2.component';
 import { UpgradedPage3Component } from './components/upgraded-page3/upgraded-page3.component';
 
-@Component({selector: 'empty', template: ''})
-class EmptyComponent {}
+
+import { locationProvider } from './ajs-ng-app/ajs-upgraded-providers';
 
 // export class CustomUrlHandlingStrategy  implements UrlHandlingStrategy {
 //   shouldProcessUrl(url) {
@@ -28,26 +26,18 @@ class EmptyComponent {}
 //   merge(url, whole) { return url; }
 // }
 
-const routes: Routes = [
-  { path: 'page2', component: EmptyComponent },
-  { path: 'page3', component: UpgradedPage3Component },
-  { path: '**', component: Page1Component }
-
-];
-
 @NgModule({
   declarations: [
     AppComponent,
     Page1Component,
     Page2Component,
-    UpgradedPage3Component,
-    EmptyComponent
+    UpgradedPage3Component
   ],
   imports: [
     BrowserModule,
     UpgradeModule,
     BrowserAnimationsModule,
-    RouterModule.forRoot(routes, {initialNavigation: true}),
+    AppRoutingModule,
 
     //material
     MatToolbarModule,
@@ -56,11 +46,11 @@ const routes: Routes = [
 
   ],
   entryComponents: [
-    Page2Component,
-    AppComponent
+    Page2Component
   ],
   providers: [
-    //{ provide: UrlHandlingStrategy, useClass: CustomUrlHandlingStrategy }
+    locationProvider,
+    { provide: UrlHandlingStrategy, useClass: CustomUrlHandlingStrategy }
   ],
   bootstrap: [AppComponent]
 })
