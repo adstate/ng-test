@@ -2,7 +2,6 @@ import { Router, UrlHandlingStrategy } from '@angular/router';
 import { downgradeComponent, downgradeInjectable } from '@angular/upgrade/static';
 
 import { Page2Component } from '../components/page2/page2.component';
-import { AppComponent } from '../app.component';
 import * as angular from 'angular';
 
 let app = angular.module('testApp', ['ui.router', 'ngMaterial']);
