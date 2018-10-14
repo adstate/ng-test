@@ -14,17 +14,15 @@ import { AppRoutingModule } from './app-routing.module'
 import { Page1Component } from './components/page1/page1.component';
 import { Page2Component } from './components/page2/page2.component';
 import { UpgradedPage3Component } from './components/upgraded-page3/upgraded-page3.component';
-
-
 import { locationProvider } from './ajs-ng-app/ajs-upgraded-providers';
 
-// export class CustomUrlHandlingStrategy  implements UrlHandlingStrategy {
-//   shouldProcessUrl(url) {
-//     return !url.toString().startsWith("/page2");
-//   }
-//   extract(url) { return url; }
-//   merge(url, whole) { return url; }
-// }
+export class CustomUrlHandlingStrategy  implements UrlHandlingStrategy {
+  shouldProcessUrl(url) {
+    return !url.toString().startsWith("/page2");
+  }
+  extract(url) { return url; }
+  merge(url, whole) { return url; }
+}
 
 @NgModule({
   declarations: [
