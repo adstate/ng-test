@@ -52,9 +52,3 @@ app.directive('routerLink', (ng6Router) => {
     }
   };
 });
-<<<<<<< HEAD
-
-angular.module('testApp').directive('page2Component', downgradeComponent({ component: Page2Component }));
-angular.module('testApp').directive('appRoot', downgradeComponent({ component: AppComponent }));
-=======
->>>>>>> feature/url-handle

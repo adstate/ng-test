@@ -1,6 +1,6 @@
 
 export abstract class ajsLocation {
-  [key: string]: string;
+  [key: string]: any;
 }
 
 export function locationFactory(i: any) {

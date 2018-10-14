@@ -14,10 +14,6 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-<<<<<<< HEAD
-    //this.upgrade.bootstrap(document.body, ['testApp'], { });
-=======
     this.upgrade.bootstrap(document.body, ['testApp']);
->>>>>>> feature/url-handle
   }
 }
