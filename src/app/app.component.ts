@@ -14,6 +14,6 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.upgrade.bootstrap(document.body, ['testApp'], { });
+    //this.upgrade.bootstrap(document.body, ['testApp'], { });
   }
 }

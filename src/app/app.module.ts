@@ -5,12 +5,12 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterUpgradeInitializer } from '@angular/router/upgrade';
 import { RouterModule, Routes, UrlHandlingStrategy } from '@angular/router';
+import { uiRouterProvider } from './ajs-ng-app/ajs-upgraded-providers';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatInputModule } from '@angular/material/input';
 
 import { AppComponent } from './app.component';
-import { AppRoutingModule } from './/app-routing.module';
 
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { Page2Component } from './components/page2/page2.component';
@@ -19,16 +19,16 @@ import { UpgradedPage3Component } from './components/upgraded-page3/upgraded-pag
 @Component({selector: 'empty', template: ''})
 class EmptyComponent {}
 //
-// export class CustomUrlHandlingStrategy  implements UrlHandlingStrategy {
-//   shouldProcessUrl(url) {
-//     return url.toString().startsWith("/page");
-//   }
-//   extract(url) { return url; }
-//   merge(url, whole) { return url; }
-// }
+export class CustomUrlHandlingStrategy  implements UrlHandlingStrategy {
+  shouldProcessUrl(url) {
+    return url.toString().startsWith("/page3");
+  }
+  extract(url) { return url; }
+  merge(url, whole) { return url; }
+}
 
 const routes: Routes = [
-  { path: 'page2', component: EmptyComponent },
+  //{ path: 'page2', component: EmptyComponent },
   { path: 'page3', component: UpgradedPage3Component },
   { path: '**', component: PageNotFoundComponent }
 
@@ -58,13 +58,14 @@ const routes: Routes = [
     AppComponent
   ],
   providers: [
-    // { provide: UrlHandlingStrategy, useClass: CustomUrlHandlingStrategy }
+    //uiRouterProvider
+     //{ provide: UrlHandlingStrategy, useClass: CustomUrlHandlingStrategy }
   ],
-  bootstrap: [AppComponent]
+  //bootstrap: [AppComponent]
 })
 export class AppModule {
-  // constructor(private upgrade: UpgradeModule) {}
-  //  ngDoBootstrap() {
-  //    this.upgrade.bootstrap(document.body, ['testApp'], { strictDi: true });
-  //  }
+  constructor(private upgrade: UpgradeModule) {}
+   ngDoBootstrap() {
+     this.upgrade.bootstrap(document.body, ['testApp'], { strictDi: true });
+   }
 }

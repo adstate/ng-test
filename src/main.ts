@@ -18,19 +18,19 @@ import './app/ajs-ng-app/components/page3.component';
 if (environment.production) {
   enableProdMode();
 }
-
-// Ensure AngularJS destroys itself on hot reloads.
-const rootElement = angular.element(document.body);
-const oldInjector = rootElement.injector();
-if (oldInjector) {
-  oldInjector.get('$rootScope').$destroy();
-  rootElement.data('$injector', null);
-}
-
-// Ensure Angular destroys itself on hot reloads.
-if (window['ngRef']) {
-  window['ngRef'].destroy();
-}
+// 
+// // Ensure AngularJS destroys itself on hot reloads.
+// const rootElement = angular.element(document.body);
+// const oldInjector = rootElement.injector();
+// if (oldInjector) {
+//   oldInjector.get('$rootScope').$destroy();
+//   rootElement.data('$injector', null);
+// }
+//
+// // Ensure Angular destroys itself on hot reloads.
+// if (window['ngRef']) {
+//   window['ngRef'].destroy();
+// }
 
 platformBrowserDynamic().bootstrapModule(AppModule)
   .then(ref => window['ngRef'] = ref)
