@@ -19,19 +19,4 @@ if (environment.production) {
   enableProdMode();
 }
 
-// Ensure AngularJS destroys itself on hot reloads.
-const rootElement = angular.element(document.body);
-const oldInjector = rootElement.injector();
-if (oldInjector) {
-  oldInjector.get('$rootScope').$destroy();
-  rootElement.data('$injector', null);
-}
-
-// Ensure Angular destroys itself on hot reloads.
-if (window['ngRef']) {
-  window['ngRef'].destroy();
-}
-
-platformBrowserDynamic().bootstrapModule(AppModule)
-  .then(ref => window['ngRef'] = ref)
-  .catch(err => console.log(err));
+platformBrowserDynamic().bootstrapModule(AppModule).catch(err => console.log(err));

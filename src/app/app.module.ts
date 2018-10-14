@@ -4,40 +4,41 @@ import { UpgradeModule } from '@angular/upgrade/static';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterUpgradeInitializer } from '@angular/router/upgrade';
-import { RouterModule, Routes, UrlHandlingStrategy } from '@angular/router';
+import { RouterModule, Routes, Router, UrlHandlingStrategy } from '@angular/router';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './/app-routing.module';
 
-import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { Page1Component } from './components/page1/page1.component';
 import { Page2Component } from './components/page2/page2.component';
 import { UpgradedPage3Component } from './components/upgraded-page3/upgraded-page3.component';
 
 @Component({selector: 'empty', template: ''})
 class EmptyComponent {}
-//
-// export class CustomUrlHandlingStrategy  implements UrlHandlingStrategy {
-//   shouldProcessUrl(url) {
-//     return url.toString().startsWith("/page");
-//   }
-//   extract(url) { return url; }
-//   merge(url, whole) { return url; }
-// }
+
+export class CustomUrlHandlingStrategy  implements UrlHandlingStrategy {
+  shouldProcessUrl(url) {
+    return !url.toString().startsWith("/page2");
+  }
+  extract(url) { return url; }
+  merge(url, whole) { return url; }
+}
 
 const routes: Routes = [
   { path: 'page2', component: EmptyComponent },
   { path: 'page3', component: UpgradedPage3Component },
-  { path: '**', component: PageNotFoundComponent }
+  { path: '**', component: Page1Component }
 
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    PageNotFoundComponent,
+    Page1Component,
     Page2Component,
     UpgradedPage3Component,
     EmptyComponent
@@ -46,11 +47,12 @@ const routes: Routes = [
     BrowserModule,
     UpgradeModule,
     BrowserAnimationsModule,
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(routes, {initialNavigation: true}),
 
     //material
     MatToolbarModule,
-    MatInputModule
+    MatInputModule,
+    MatButtonModule
 
   ],
   entryComponents: [
@@ -58,7 +60,7 @@ const routes: Routes = [
     AppComponent
   ],
   providers: [
-    // { provide: UrlHandlingStrategy, useClass: CustomUrlHandlingStrategy }
+    //{ provide: UrlHandlingStrategy, useClass: CustomUrlHandlingStrategy }
   ],
   bootstrap: [AppComponent]
 })
