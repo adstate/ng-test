@@ -16,9 +16,7 @@ import { AppRoutingModule } from './/app-routing.module';
 import { Page1Component } from './components/page1/page1.component';
 import { Page2Component } from './components/page2/page2.component';
 import { UpgradedPage3Component } from './components/upgraded-page3/upgraded-page3.component';
-
-@Component({selector: 'empty', template: ''})
-class EmptyComponent {}
+import { locationProvider } from './ajs-ng-app/ajs-upgraded-providers';
 
 export class CustomUrlHandlingStrategy  implements UrlHandlingStrategy {
   shouldProcessUrl(url) {
@@ -28,26 +26,18 @@ export class CustomUrlHandlingStrategy  implements UrlHandlingStrategy {
   merge(url, whole) { return url; }
 }
 
-const routes: Routes = [
-  { path: 'page2', component: EmptyComponent },
-  { path: 'page3', component: UpgradedPage3Component },
-  { path: '**', component: Page1Component }
-
-];
-
 @NgModule({
   declarations: [
     AppComponent,
     Page1Component,
     Page2Component,
-    UpgradedPage3Component,
-    EmptyComponent
+    UpgradedPage3Component
   ],
   imports: [
     BrowserModule,
     UpgradeModule,
     BrowserAnimationsModule,
-    RouterModule.forRoot(routes, {initialNavigation: true}),
+    AppRoutingModule,
 
     //material
     MatToolbarModule,
@@ -56,11 +46,11 @@ const routes: Routes = [
 
   ],
   entryComponents: [
-    Page2Component,
-    AppComponent
+    Page2Component
   ],
   providers: [
-    //{ provide: UrlHandlingStrategy, useClass: CustomUrlHandlingStrategy }
+    locationProvider,
+    { provide: UrlHandlingStrategy, useClass: CustomUrlHandlingStrategy }
   ],
   bootstrap: [AppComponent]
 })
